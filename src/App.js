@@ -2,14 +2,18 @@ import logo from './logo.svg';
 import './App.css';
 import {axiosAuth} from './api/service';
 import { useEffect, useState } from 'react';
-
+import array_count_values from './utils/statusCount'
 
 function App() { 
   const [data, setdata] = useState([])
+  const [code, setcode] = useState({})
   const fetch = async() =>{
     try{
       await axiosAuth.post('/',{email:"ankit007im@gmail.com"}).then(result=>{
         setdata(result.data)
+        console.log("2");
+
+        getStatusCount(result.data)
       });
       
     }catch(err){
@@ -17,26 +21,29 @@ function App() {
     }
   }
 
-  const getStatusCount = (data)=>{
-    var codes = []
-    data.map(d => {
-      codes.push(d.current_status_code)
-    })
-    console.log(codes);
+  const getStatusCount = async(data) =>{
+    console.log("1");
+    var codes  = data.map(d=>d.current_status_code)
+    setcode(await array_count_values(codes));
   }
-
   useEffect(()=>{
     fetch();
-    getStatusCount(data)
   },[])
 
-  
   return (
+    
     <div className="App">
       <h1>Shipment app</h1>
-      {/* {data.map(d=>(
-        <p>{d.current_status_code}</p>
-      ))} */}
+      {code ? (<p>
+        {Object.keys(code).map((keyName, i) => (
+        <li className="travelcompany-input" key={i}>
+            <span className="input-label">Name: {keyName}  Count: {code[keyName]}</span>
+        </li>
+      ))} </p>
+      ):
+      (<h1>No Data FOund</h1>)
+      }
+        
     </div>
   );
 }
