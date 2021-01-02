@@ -11,7 +11,7 @@ function App() {
   const [data, setdata] = useState([]);
   const [code, setcode] = useState({});
   const [selectedCard, setselectedCard] = useState("OOD");
-  const [selectedTable, setselectedTable] = useState();
+  const [selectedTable, setselectedTable] = useState("68816235");
   const fetch = async () => {
     try {
       await axiosAuth
@@ -27,9 +27,11 @@ function App() {
 
   const handleCard = (title) => {
     setselectedCard(title);
+    console.log(selectedCard);
   };
 
   const handelTable = (tile) => {
+    console.log(tile);
     setselectedTable(tile);
   };
   const getStatusCount = async (data) => {
@@ -51,19 +53,23 @@ function App() {
     : filteredData;
 
   return (
-    <div className="App">
+    <div className="App ">
       <h1>Shipment app</h1>
-      <TopCard
-        statusCode={code}
-        onItemSelect={handleCard}
-        selected={selectedCard}
-      />
-      <StatusView showStatus={filteredData} />
-      <TableView
-        tableData={filteredTableData}
-        onItemSelect={handelTable}
-        selected={selectedTable}
-      />
+      <div className="p-8">
+        <TopCard
+          statusCode={code}
+          onItemSelect={handleCard}
+          selected={selectedCard}
+        />
+        <div className="flex justify-between">
+          <StatusView showStatus={filteredTableData} />
+          <TableView
+            tableData={filteredData}
+            onItemSelect={handelTable}
+            selected={selectedTable}
+          />
+        </div>
+      </div>
     </div>
   );
 }
