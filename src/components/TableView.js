@@ -1,20 +1,48 @@
 import React from "react";
+// import convertToDAte from "../utils/dateTime";
+
+function formatDate(nowDate) {
+  var newDate = new Date(nowDate);
+  return (
+    newDate.getDate() +
+    "/" +
+    (newDate.getMonth() + 1) +
+    "/" +
+    newDate.getFullYear()
+  );
+}
 
 function TableView({ tableData, onItemSelect }) {
   return (
-    <div className="flex flex-col h-screen relative">
-      <div className=" flex-grow overflow-auto">
-        <table className=" relative w-full border">
-          <thead className="">
-            <tr className=" text-xs p-2 font-extralight text-gray-400">
-              <th className="sticky top-0 px-6 py-3 bg-white">AWB number</th>
-              <th className="sticky top-0 px-6 py-3 bg-white">Transporter</th>
-              <th className="sticky top-0 px-6 py-3 bg-white">Source</th>
-              <th className="sticky top-0 px-6 py-3 bg-white">Destination</th>
-              <th className="sticky top-0 px-6 py-3 bg-white">Brand</th>
-              <th className="sticky top-0 px-6 py-3 bg-white">Start Date</th>
-              <th className="sticky top-0 px-6 py-3 bg-white">ETD</th>
-              <th className="sticky top-0 px-6 py-3 bg-white">Status</th>
+    <div className="flex h-screen relative scrollbar">
+      <div className="flex-grow overflow-auto">
+        <table className="relative w-full table-auto border">
+          <thead>
+            <tr className="p-6 text-gray-400">
+              <th className="sticky text-xs font-normal top-0 text-left px-6 py-2 bg-white">
+                AWB number
+              </th>
+              <th className="sticky text-xs font-normal top-0 text-left px-6 py-2 bg-white">
+                Transporter
+              </th>
+              <th className="sticky text-xs font-normal top-0 text-left px-6 py-2 bg-white">
+                Source
+              </th>
+              <th className="sticky text-xs font-normal top-0 text-left px-6 py-2 bg-white">
+                Destination
+              </th>
+              <th className="sticky text-xs font-normal top-0 text-left px-6 py-2 bg-white">
+                Brand
+              </th>
+              <th className="sticky text-xs font-normal top-0 text-left px-6 py-2 bg-white">
+                Start Date
+              </th>
+              <th className="sticky text-xs font-normal top-0 text-left px-6 py-2 bg-white">
+                ETD
+              </th>
+              <th className="sticky text-xs font-normal top-0 text-left px-6 py-2 bg-white">
+                Status
+              </th>
             </tr>
           </thead>
           <tbody className="h-52 divide-y">
@@ -22,22 +50,26 @@ function TableView({ tableData, onItemSelect }) {
               <tr
                 key={item._id}
                 onClick={() => onItemSelect(item.awbno)}
-                className="text-xs mt-12 font-normal border-t-1"
+                className="text-xs font-normal border "
               >
-                <td className="p-4 text-right">{item.awbno}</td>
-                <td className="p-4 text-right">{item.carrier}</td>
-                <td className="p-4 text-right">{item.from}</td>
-                <td className="p-4 text-right">{item.to}</td>
-                <td className="p-4 text-right">
+                <td className="p-3 text-left">{item.awbno}</td>
+                <td className="p-3 text-left">{item.carrier}</td>
+                <td className="p-3 text-left">{item.from}</td>
+                <td className="p-3 text-left">{item.to}</td>
+                <td className="p-3 text-left">
                   {item.recipient ? item.recipient : "No Data"}
                 </td>
-                <td className="p-4 text-right">{item.pickup_date}</td>
-                <td className="p-4 text-right">
+                <td className="p-3 text-left">
+                  {formatDate(item.pickup_date)}
+                </td>
+                <td className="p-3 text-left">
                   {item.extra_fields
-                    ? item.extra_fields["expected_delivery_date"]
+                    ? formatDate(item.extra_fields["expected_delivery_date"])
                     : "NO DATA"}
                 </td>
-                <td className="p-4 text-right">{item.current_status}</td>
+                <td className="p-3 text-green-400 text-left">
+                  {item.current_status}
+                </td>
               </tr>
             ))}
           </tbody>

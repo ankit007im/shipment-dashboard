@@ -6,6 +6,7 @@ import array_count_values from "./utils/statusCount";
 import TopCard from "./components/TopCard";
 import TableView from "./components/TableView";
 import StatusView from "./components/StatusView";
+import Navbar from "./components/Navbar";
 
 function App() {
   const [data, setdata] = useState([]);
@@ -27,7 +28,8 @@ function App() {
 
   const handleCard = (title) => {
     setselectedCard(title);
-    console.log(selectedCard);
+    const f = title ? data.filter((s) => s.current_status_code == title) : data;
+    setselectedTable(f[0].awbno);
   };
 
   const handelTable = (tile) => {
@@ -54,14 +56,14 @@ function App() {
 
   return (
     <div className="App ">
-      <h1>Shipment app</h1>
+      <Navbar />
       <div className="p-8">
         <TopCard
           statusCode={code}
           onItemSelect={handleCard}
           selected={selectedCard}
         />
-        <div className="flex justify-between">
+        <div className="flex">
           <StatusView showStatus={filteredTableData} />
           <TableView
             tableData={filteredData}
