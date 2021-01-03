@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/shipment-dashboard/static/css/main.7f67adf8.chunk.css",
-    "main.js": "/shipment-dashboard/static/js/main.3141ac0d.chunk.js",
-    "main.js.map": "/shipment-dashboard/static/js/main.3141ac0d.chunk.js.map",
+    "main.css": "/shipment-dashboard/static/css/main.45130232.chunk.css",
+    "main.js": "/shipment-dashboard/static/js/main.a2573ac9.chunk.js",
+    "main.js.map": "/shipment-dashboard/static/js/main.a2573ac9.chunk.js.map",
     "runtime-main.js": "/shipment-dashboard/static/js/runtime-main.5e54ceb0.js",
     "runtime-main.js.map": "/shipment-dashboard/static/js/runtime-main.5e54ceb0.js.map",
     "static/js/2.24d1f54f.chunk.js": "/shipment-dashboard/static/js/2.24d1f54f.chunk.js",
@@ -10,16 +10,15 @@
     "static/js/3.aff24ea0.chunk.js": "/shipment-dashboard/static/js/3.aff24ea0.chunk.js",
     "static/js/3.aff24ea0.chunk.js.map": "/shipment-dashboard/static/js/3.aff24ea0.chunk.js.map",
     "index.html": "/shipment-dashboard/index.html",
-    "static/css/main.7f67adf8.chunk.css.map": "/shipment-dashboard/static/css/main.7f67adf8.chunk.css.map",
+    "static/css/main.45130232.chunk.css.map": "/shipment-dashboard/static/css/main.45130232.chunk.css.map",
     "static/js/2.24d1f54f.chunk.js.LICENSE.txt": "/shipment-dashboard/static/js/2.24d1f54f.chunk.js.LICENSE.txt",
     "static/media/cirlce_image.ecef24c7.png": "/shipment-dashboard/static/media/cirlce_image.ecef24c7.png",
-    "static/media/logo.60097ea2.svg": "/shipment-dashboard/static/media/logo.60097ea2.svg",
-    "static/media/logo.6ce24c58.svg": "/shipment-dashboard/static/media/logo.6ce24c58.svg"
+    "static/media/logo.60097ea2.svg": "/shipment-dashboard/static/media/logo.60097ea2.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.5e54ceb0.js",
     "static/js/2.24d1f54f.chunk.js",
-    "static/css/main.7f67adf8.chunk.css",
-    "static/js/main.3141ac0d.chunk.js"
+    "static/css/main.45130232.chunk.css",
+    "static/js/main.a2573ac9.chunk.js"
   ]
 }
