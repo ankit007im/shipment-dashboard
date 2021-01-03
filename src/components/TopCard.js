@@ -1,9 +1,6 @@
 import React from "react";
 
 function TopCard({ statusCode, onItemSelect, selected }) {
-  const sayHello = (name) => {
-    alert(`Hello, ${name}!`);
-  };
   return (
     <div className="container p-4">
       {statusCode ? (
@@ -30,7 +27,7 @@ function TopCard({ statusCode, onItemSelect, selected }) {
           </div>
         </div>
       ) : (
-        <h1>No Data FOund</h1>
+        <h1>No Data Found</h1>
       )}
     </div>
   );

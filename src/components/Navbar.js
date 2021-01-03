@@ -12,34 +12,34 @@ function Navbar() {
           <YourSvg className="h-10" />
         </div>
         <div className="pt-1">
-          <a className="text-base no-underline  text-grey-darkest font-sans font-bold">
+          <a
+            href={"#"}
+            className="text-base no-underline  text-grey-darkest font-sans font-bold"
+          >
             Intugine
           </a>
         </div>
       </div>
       <div className="flex p-4">
         <div className="sm:mb-0 self-center">
-          {/* <!-- <div className="h-10" style="display: table-cell, vertical-align: middle;"> --> */}
           <a
-            href="#"
+            href={"#"}
             className="text-sm font-semibold no-underline text-black hover:text-blue-dark ml-2 px-1"
           >
             Home
           </a>
           <a
-            href="#"
+            href={"#"}
             className="text-sm font-semibold no-underline text-grey-darker hover:text-blue-dark ml-2 px-1"
           >
             Brands
           </a>
-          {/* <!-- <a href="/two" className="text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2">About Us</a> --> */}
           <a
-            href="#"
+            href={"#"}
             className="text-sm font-semibold no-underline text-grey-darker hover:text-blue-dark ml-2 px-1"
           >
             Transporters
           </a>
-          {/* <!-- </div> --> */}
         </div>
         <div className="bg-gray-400 rounded-full p-1">
           <svg
@@ -78,9 +78,9 @@ function Navbar() {
             <path
               d="M1 1L7 7L13 1"
               stroke="black"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>
         </div>

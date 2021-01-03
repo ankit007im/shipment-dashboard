@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import { axiosAuth } from "./api/service";
 import { useEffect, useState } from "react";
@@ -33,11 +32,9 @@ function App() {
   };
 
   const handelTable = (tile) => {
-    console.log(tile);
     setselectedTable(tile);
   };
   const getStatusCount = async (data) => {
-    console.log(data);
     var codes = data.map((d) => d.current_status_code);
     setcode(await array_count_values(codes));
   };

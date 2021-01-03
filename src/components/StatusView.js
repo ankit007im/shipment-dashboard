@@ -2,7 +2,6 @@ import React from "react";
 import logo from "../assets/cirlce_image.png";
 
 function StatusView({ showStatus }) {
-  console.log(showStatus);
   var that = false;
   var scanData = showStatus.map((v) => v.scan);
   if (scanData.length > 1) {
@@ -50,8 +49,8 @@ function StatusView({ showStatus }) {
         </div>
 
         {scanData.map((scan) => (
-          <div className="flex p-1">
-            {that == true ? (
+          <div className="flex p-1" key={scan.time}>
+            {that === true ? (
               <div className="flex w-full">
                 <div className="self-center p-3">
                   <img src={logo} className="h-5" />
@@ -68,7 +67,7 @@ function StatusView({ showStatus }) {
             ) : (
               <div>
                 {scan.map((v) => (
-                  <div className="flex w-full p-1">
+                  <div className="flex w-full p-1" key={v.time}>
                     <div className="self-center p-3">
                       <img src={logo} className="h-5" />
                     </div>

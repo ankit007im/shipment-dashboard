@@ -1,4 +1,7 @@
+
+
 {
+  "homepage": "http://ankit007im.github.io/shipment-dashboard",
   "name": "shipment-dashboard",
   "version": "0.1.0",
   "private": true,
@@ -10,6 +13,7 @@
     "@testing-library/user-event": "^12.1.10",
     "autoprefixer": "^9.8.6",
     "axios": "^0.21.1",
+    "gh-pages": "^3.1.0",
     "postcss": "^7.0.35",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -18,6 +22,8 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
