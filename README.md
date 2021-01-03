@@ -1,70 +1,184 @@
-# Getting Started with Create React App
+# Shipment DashBoard 🔥🔥🔥
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+### Links For Projects
 
-In the project directory, you can run:
+ [https://intugine-hiring.s3.ap-south-1.amazonaws.com/FrontendDesign.pdf](Design By Intugine)
+ 
+ [ https://intugine-hiring.s3.ap-south-1.amazonaws.com/FrontendAssets.zip](Design Assets By Intugine)
+ 
+ [https://f0ztti2nsk.execute-api.ap-south-1.amazonaws.com/v1/consignment/fetch](API By Intugine)
+ 
+ ## Task
+ 
+The design is for a shipment dashboard where the various shipments are shown which are going through various vendors like FedEx, Bluedart etc.. The dashboard shows these shipments, give their current status by a timeline view, and there are some counters which shows the number of shipments which are in a particular state e.g. DEL (Delivered), INT (In Transit), OOD (Out for Delivery) etc….
 
-### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Replicate the Design [1][2].
+Use API endpoint [3] to fetch Shipments and show them in the right hand tabular view [1].
+HTTP Method - POST
+ The API requires some data to be passed in various places in the API which are :-
+```
+Bearer Token - tTU3gFVUdP
+Body - {
+email: [your_email_address] e.g. {email: “mayankmittal@intugine.com”}
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+}
+```
 
-### `yarn test`
+Response contains “data” key which is an array which will be used for the data. Shown in Data sample below.
+Calculate the counter values from the data using ‘current_status_code’ in the shipment data.
+Table View (RIght)
+On selecting different status counter ( 3rd point ) show shipments of the selected status.
+Use filtered data based on selected counter e.g. DEL, INT, OOD.
+DEL (Delivered) counter will be selected by default.
+Timeline View [1] (Left)
+Use `scan` array in the shipment data for this.
+The no. of elements in the timeline will be same as of `scan` array length
+Each element within the timeline view will contain the data which is available in individual elements of the `scan` array and mentioned in the Data sample below.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## API Structure
 
-### `yarn build`
+```
+{
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    "data": [
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+        {
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+            "_id": "5d309ea2048c0a3321692de9", //Unique Id (Not used in the design)
 
-### `yarn eject`
+            "awbno": "68816235", // AWB Number
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+            "carrier": "Safexpress", // Use this for Transporter and Brand both.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+            "pickup_date": "2019-07-11 00:00:00" //Start Date,
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+            "current_status": "Out for Delivery", // Current status, used for counters and in tabular view in `Status`
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+            "current_status_code": "OOD", //Current Status Code, used for counters
 
-## Learn More
+            "order_data": "", //Not used
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+            "recipient": "", // Not used
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+            "extra_fields": {
 
-### Code Splitting
+                "expected_delivery_date": "1970-01-01 05:30:00" // ETD
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+            },
 
-### Analyzing the Bundle Size
+            "from": "WHITEFIELD", //Source
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+            "to": "NEW DELHI", //Destination
 
-### Making a Progressive Web App
+            "time": "2019-07-18 02:13:57",
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+            "scan": [ //Used in timeline view
 
-### Advanced Configuration
+                {
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+                    "time": "2019-07-18 02:13:57", //Time in timeline view (right)
 
-### Deployment
+                    "location": "Consignment Out for Delivery", // Status in timeline view (left)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+                    "status_detail": "OUT FOR DELIVERY" //not used
 
-### `yarn build` fails to minify
+                },
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+                {
+
+                    "time": "2019-07-17 23:02:24",
+
+                    "location": "Waybill Undelivered",
+
+                    "status_detail": "UN-DELIVERED"
+
+                },
+
+                {
+
+                    "time": "2019-07-17 03:59:19",
+
+                    "location": "Consignment Out for Delivery",
+
+                    "status_detail": "OUT FOR DELIVERY"
+
+                },
+
+                {
+
+                    "time": "2019-07-15 18:49:46",
+
+                    "location": "Waybill Undelivered",
+
+                    "status_detail": "UN-DELIVERED"
+
+                },
+
+                {
+
+                    "time": "2019-07-15 04:14:20",
+
+                    "location": "Consignment Out for Delivery",
+
+                    "status_detail": "OUT FOR DELIVERY"
+
+                },
+
+                {
+
+                    "time": "2019-07-13 20:41:28",
+
+                    "location": "Consignment Arrived at DELHI",
+
+                    "status_detail": "ARRIVED AT DESTINATION"
+
+                },
+
+                {
+
+                    "time": "2019-07-11 07:01:53",
+
+                    "location": "Consignment In Transit To Next Hub",
+
+                    "status_detail": "IN-TRANSIT"
+
+                },
+
+                {
+
+                    "time": "2019-07-11 03:05:26",
+
+                    "location": "Consignment Arrived at BANGALORE",
+
+                    "status_detail": "IN-TRANSIT"
+
+                },
+
+                {
+
+                    "time": "2019-07-11 00:00:00",
+
+                    "location": "Waybill Generated at WHITEFIELD",
+
+                    "status_detail": "BOOKED"
+
+                }
+
+            ],
+
+            "tracking_url": "https://s.shipway.in/21759772/68816235",
+
+            "createdAt": "2019-07-18T16:30:26.155Z"
+
+        },
+
+……
+
+    ]
+
+}
+```
+
+
